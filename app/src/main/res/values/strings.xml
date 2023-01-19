@@ -10,4 +10,8 @@
     <string name="description">Description</string>
     <string name="profile">Profile</string>
     <string name="write_your_name">Write your name</string>
+    <string name="to_do_list">To-do list!</string>
+    <string name="Description">Here you can write down something important or make a schedule for tomorrow:)</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
 </resources>

@@ -51,4 +51,6 @@ dependencies {
 
 //    Circle imageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+//    Dots indicator
+    implementation("com.tbuonomo:dotsindicator:4.3")
 }
