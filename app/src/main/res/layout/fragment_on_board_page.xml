@@ -46,6 +46,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_to_do" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cornerRadius="20dp"
@@ -55,6 +56,23 @@
         android:backgroundTint="@color/black"
         android:paddingVertical="14dp"
         android:layout_marginEnd="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="32dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_start"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        app:cornerRadius="64dp"
+        android:text="@string/start"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/black"
+        android:paddingVertical="14dp"
+        android:layout_marginEnd="64dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="32dp"/>
 
@@ -72,7 +90,5 @@
         android:fontFamily="sans-serif-condensed"
         android:layout_marginStart="64dp"
         android:layout_marginBottom="32dp"/>
-
-
-
+<!--    -->
 </androidx.constraintlayout.widget.ConstraintLayout>

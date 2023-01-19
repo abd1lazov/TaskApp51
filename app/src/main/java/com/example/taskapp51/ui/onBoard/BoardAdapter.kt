@@ -11,15 +11,20 @@ class BoardAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
     private val listBoarding = arrayListOf(BoardModel(
         R.drawable.img,
         "To-do list!",
-        "Here you can write down something important or make a schedule for tomorrow:)"
+        "Here you can write down something important or make a schedule for tomorrow:)",
+        false
     ),
         BoardModel(R.drawable.img2,
         "Share your crazy idea ^_^",
-        "You can easily share with your report, list or schedule and it's convenient"
+        "You can easily share with your report, list or schedule and it's convenient",
+        false
         ),
         BoardModel(R.drawable.img3,
         "Flexibility",
-        "Your note with you at home, at work, even at the resort")
+        "Your note with you at home, at work, even at the resort",
+        true
+        )
+
     )
 
     override fun getCount(): Int {

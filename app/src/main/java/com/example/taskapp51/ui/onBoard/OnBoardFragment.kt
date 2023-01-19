@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnAttach
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentOnBoardBinding
 
@@ -26,5 +27,7 @@ class OnBoardFragment : Fragment() {
 
         val adapter = BoardAdapter(childFragmentManager)
         binding.vpBoard.adapter = adapter
+
+        binding.dotsIndicator.attachTo(binding.vpBoard)
     }
 }

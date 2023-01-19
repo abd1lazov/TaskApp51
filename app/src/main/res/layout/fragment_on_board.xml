@@ -3,12 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.onBoard.OnBoardFragment">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+        android:id="@+id/dots_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dotsColor="#DCF6E6"
+        app:dotsSize="8dp"
+        app:dotsSpacing="1dp"
+        app:selectedDotColor="#DCF6E6"
+        app:progressMode="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="360dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
