@@ -6,25 +6,30 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.taskapp51.R
 
-class BoardAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
+class BoardAdapter(fm: FragmentManager,
+                    var listenerNext: () -> Unit,
+                    var listenerSkip: () -> Unit)
+                    : FragmentStatePagerAdapter(fm) {
 
     private val listBoarding = arrayListOf(BoardModel(
         R.drawable.img,
         "To-do list!",
         "Here you can write down something important or make a schedule for tomorrow:)",
-        false
+        false,
+        R.color.bg_board1
     ),
         BoardModel(R.drawable.img2,
         "Share your crazy idea ^_^",
         "You can easily share with your report, list or schedule and it's convenient",
-        false
+        false,
+            R.color.bg_board2
         ),
         BoardModel(R.drawable.img3,
         "Flexibility",
         "Your note with you at home, at work, even at the resort",
-        true
+        true,
+            R.color.bg_board3
         )
-
     )
 
     override fun getCount(): Int {
@@ -33,7 +38,7 @@ class BoardAdapter(fm: FragmentManager): FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         val data = bundleOf("onBoarding" to listBoarding[position])
-        val fragment = OnBoardPageFragment()
+        val fragment = OnBoardPageFragment(listenerNext,listenerSkip)
         fragment.arguments = data
         return fragment
     }

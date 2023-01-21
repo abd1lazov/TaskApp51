@@ -16,14 +16,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:dotsColor="#DCF6E6"
-        app:dotsSize="8dp"
+        app:dotsSize="6dp"
+        app:dotsCornerRadius="2dp"
         app:dotsSpacing="1dp"
         app:selectedDotColor="#DCF6E6"
         app:progressMode="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="360dp"/>
+        android:layout_marginBottom="200dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

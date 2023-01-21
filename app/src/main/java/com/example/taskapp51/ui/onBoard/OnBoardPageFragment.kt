@@ -10,7 +10,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentOnBoardPageBinding
 
-class OnBoardPageFragment : Fragment() {
+class OnBoardPageFragment(
+                var listenerNext: () -> Unit,
+                var listenerSkip: () -> Unit):
+                Fragment() {
 
     lateinit var binding: FragmentOnBoardPageBinding
 
@@ -30,8 +33,11 @@ class OnBoardPageFragment : Fragment() {
         binding.btnStart.setOnClickListener{
             findNavController().navigate(R.id.navigation_home)
         }
+        binding.btnNext.setOnClickListener{
+            listenerNext.invoke()
+        }
         binding.btnSkip.setOnClickListener{
-            findNavController().navigate(R.id.navigation_home)
+            listenerSkip.invoke()
         }
     }
 
@@ -45,6 +51,12 @@ class OnBoardPageFragment : Fragment() {
             binding.btnSkip.isVisible = data.isLast == false
             binding.btnNext.isVisible = data.isLast == false
             binding.btnStart.isVisible = data.isLast == true
+
+            if (!data.isLast){
+                binding.boardConst.setBackgroundResource(data.bg)
+            }else{
+                binding.boardConst.setBackgroundResource(data.bg)
+            }
         }
     }
 }
