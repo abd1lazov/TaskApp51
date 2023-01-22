@@ -9,6 +9,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.taskapp51.databinding.ActivityMainBinding
+import com.example.taskapp51.ui.utils.Preferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,13 +24,17 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_profile,
+                R.id.newTaskFragment
             )
         )
+
+        if(!Preferences(applicationContext).isBoardingShowed()){
+            navController.navigate(R.id.onBoardFragment)
+        }
+
         navController.addOnDestinationChangedListener{_, destination, _, ->
             if (destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment){
                 navView.visibility = View.GONE
@@ -38,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             }
             if (destination.id == R.id. onBoardFragment){
                 supportActionBar?.hide()
+            }else{
+                supportActionBar?.show()
             }
         }
 

@@ -1,5 +1,6 @@
 package com.example.taskapp51.ui.onBoard
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentOnBoardPageBinding
+import com.example.taskapp51.ui.utils.Preferences
 
 class OnBoardPageFragment(
                 var listenerNext: () -> Unit,
@@ -31,7 +33,9 @@ class OnBoardPageFragment(
 
     private fun initListeners() {
         binding.btnStart.setOnClickListener{
+            Preferences(requireContext()).setBoardingShowed(true)
             findNavController().navigate(R.id.navigation_home)
+//            findNavController().navigateUp()
         }
         binding.btnNext.setOnClickListener{
             listenerNext.invoke()
