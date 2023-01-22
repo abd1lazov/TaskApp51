@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.taskapp51.databinding.FragmentProfileBinding
+import com.example.taskapp51.ui.utils.Preferences
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
+    private val prefs: Preferences? = null
 
 
     var mGetContent = registerForActivityResult(ActivityResultContracts.GetContent()){ uri ->
@@ -39,9 +40,9 @@ class ProfileFragment : Fragment() {
         binding.imgProfile.setOnClickListener{
             mGetContent.launch("image/*")
         }
-
     }
 
     private fun initViews() {
-        }
+
     }
+}

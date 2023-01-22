@@ -9,7 +9,6 @@ import androidx.core.view.doOnAttach
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentOnBoardBinding
 
-
 class OnBoardFragment : Fragment() {
 
     private lateinit var binding: FragmentOnBoardBinding

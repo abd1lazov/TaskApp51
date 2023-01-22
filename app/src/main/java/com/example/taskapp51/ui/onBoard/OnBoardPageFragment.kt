@@ -1,6 +1,5 @@
 package com.example.taskapp51.ui.onBoard
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
