@@ -9,6 +9,7 @@ import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.example.taskapp51.databinding.FragmentProfileBinding
 import com.example.taskapp51.extensions.loadImage
+import com.example.taskapp51.extensions.showToast
 import com.example.taskapp51.utils.Preferences
 
 class ProfileFragment : Fragment() {
@@ -19,8 +20,10 @@ class ProfileFragment : Fragment() {
         binding.imgProfile.setImageURI(uri)
 
         binding.imgProfile.loadImage(uri.toString())
+        binding.etName.setText(Preferences(requireContext()).isUsernameProfile())
 
         Preferences(requireContext()).setImageProfile(uri.toString())
+        showToast(" Success!")
     }
 
     override fun onCreateView(
@@ -47,8 +50,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initViews() {
-//        binding.imgProfile.loadImage(Preferences(requireContext()).getImageProfile().toString())
-
         binding.imgProfile.setImageURI(Preferences(requireContext()).getImageProfile()?.toUri())
+        Preferences(requireContext()).saveUsernameProfile(binding.etName.getText().toString())
     }
 }

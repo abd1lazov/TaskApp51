@@ -2,7 +2,6 @@ package com.example.taskapp51.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.activity.result.ActivityResultLauncher
 import com.example.taskapp51.R
 
 class Preferences(context: Context)  {
@@ -25,4 +24,11 @@ class Preferences(context: Context)  {
         return sharedPreference.getString("image", R.mipmap.ic_launcher.toString())
     }
 
+    fun saveUsernameProfile(name: String?) {
+        return sharedPreference.edit().putString("username", name).apply()
+    }
+
+    fun isUsernameProfile(): String? {
+        return sharedPreference.getString("username", "")
+    }
 }
