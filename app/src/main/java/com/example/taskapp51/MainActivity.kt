@@ -10,7 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.taskapp51.databinding.ActivityMainBinding
-import com.example.taskapp51.ui.utils.Preferences
+import com.example.taskapp51.utils.Preferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.newTaskFragment
             )
         )
-
         if(!Preferences(applicationContext).isBoardingShowed()){
             navController.navigate(R.id.onBoardFragment)
         }

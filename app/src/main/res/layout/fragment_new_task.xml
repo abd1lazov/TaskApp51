@@ -51,7 +51,7 @@
         android:text="@string/save"
         android:textAllCaps="false"
         android:textStyle="bold"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:padding="12dp"
         android:layout_marginTop="16dp"
         app:cornerRadius="12dp"/>

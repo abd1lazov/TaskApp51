@@ -9,7 +9,7 @@ import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentOnBoardPageBinding
-import com.example.taskapp51.ui.utils.Preferences
+import com.example.taskapp51.utils.Preferences
 
 class OnBoardPageFragment(
                 var listenerNext: () -> Unit,

@@ -1,8 +1,9 @@
-package com.example.taskapp51.ui.utils
+package com.example.taskapp51.utils
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.activity.result.ActivityResultLauncher
+import com.example.taskapp51.R
 
 class Preferences(context: Context)  {
     private val sharedPreference: SharedPreferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE)
@@ -16,15 +17,12 @@ class Preferences(context: Context)  {
         return sharedPreference.getBoolean("board",false)
     }
 
-    fun isImageUsers(): String? {
-        return sharedPreference.getString("imageUsers", null)
+    fun setImageProfile(uri: String?){
+        return sharedPreference.edit().putString("image", uri).apply()
     }
 
-    fun saveUsernameProfile(name: String?) {
-        sharedPreference.edit().putString("username", name).apply()
+    fun getImageProfile(): String?{
+        return sharedPreference.getString("image", R.mipmap.ic_launcher.toString())
     }
 
-    fun saveImageUsers(uri: ActivityResultLauncher<String>) {
-        sharedPreference.edit().putString("imageUsers", uri.toString()).apply()
-    }
 }
