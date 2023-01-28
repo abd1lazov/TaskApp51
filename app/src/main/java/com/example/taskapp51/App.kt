@@ -11,11 +11,11 @@ class App: Application() {
         database = Room.databaseBuilder(
             this, DataBase::class.java,
             "database")
+            .allowMainThreadQueries()
             .build()
     }
 
     companion object{
         lateinit var database: DataBase
     }
-
 }

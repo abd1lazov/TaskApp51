@@ -11,6 +11,12 @@ class TaskAdapter: RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
      fun addTask(taskModel: TaskModel){
         taskList.add(taskModel)
+        notifyItemChanged(0)
+    }
+
+    fun addTasks(list: List<TaskModel>){
+        taskList.clear()
+        taskList.addAll(list)
         notifyDataSetChanged()
     }
 

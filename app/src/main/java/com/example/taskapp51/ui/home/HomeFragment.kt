@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.taskapp51.App
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentHomeBinding
 
@@ -52,6 +53,10 @@ class HomeFragment : Fragment() {
 //
 //            adapter.addTask(TaskModel(title, desc))
 //        }
+
+        val listOfTasks = App.database.taskDao()?.getAllTasks()
+        adapter.addTasks(listOfTasks as List<TaskModel>)
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
