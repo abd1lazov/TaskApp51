@@ -45,13 +45,13 @@ class HomeFragment : Fragment() {
         binding.rvHome.layoutManager = LinearLayoutManager(context)
         binding.rvHome.adapter = adapter
 
-        setFragmentResultListener("new_task"){key, bundle ->
-            val title = bundle.getString("title")
-            val desc = bundle.getString("desc")
-            Log.e("ololo", "initViews: $title$desc")
-
-            adapter.addTask(TaskModel(title, desc))
-        }
+//        setFragmentResultListener("new_task"){key, bundle ->
+//            val title = bundle.getString("title")
+//            val desc = bundle.getString("desc")
+//            Log.e("ololo", "initViews: $title$desc")
+//
+//            adapter.addTask(TaskModel(title, desc))
+//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
