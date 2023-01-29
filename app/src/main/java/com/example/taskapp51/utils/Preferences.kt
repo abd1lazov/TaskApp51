@@ -9,7 +9,6 @@ class Preferences(context: Context)  {
 
     fun setBoardingShowed(isShow: Boolean){
         return sharedPreference.edit().putBoolean("board", isShow).apply()
-
     }
 
     fun isBoardingShowed(): Boolean{

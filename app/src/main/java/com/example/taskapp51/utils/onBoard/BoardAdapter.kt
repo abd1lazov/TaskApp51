@@ -1,4 +1,4 @@
-package com.example.taskapp51.ui.onBoard
+package com.example.taskapp51.utils.onBoard
 
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -11,7 +11,8 @@ class BoardAdapter(fm: FragmentManager,
                     var listenerSkip: () -> Unit)
                     : FragmentStatePagerAdapter(fm) {
 
-    private val listBoarding = arrayListOf(BoardModel(
+    private val listBoarding = arrayListOf(
+        BoardModel(
         R.drawable.img,
         "To-do list!",
         "Here you can write down something important or make a schedule for tomorrow:)",

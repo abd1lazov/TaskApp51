@@ -1,4 +1,4 @@
-package com.example.taskapp51.ui.onBoard
+package com.example.taskapp51.utils.onBoard
 
 data class BoardModel(
     var img: Int,
