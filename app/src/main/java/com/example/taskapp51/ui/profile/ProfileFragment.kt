@@ -16,15 +16,16 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
 
-    var mGetContent = registerForActivityResult(ActivityResultContracts.GetContent()){ uri ->
-        binding.imgProfile.setImageURI(uri)
+    private var mGetContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            binding.imgProfile.setImageURI(uri)
 
-        binding.imgProfile.loadImage(uri.toString())
-        binding.etName.setText(Preferences(requireContext()).isUsernameProfile())
+            binding.imgProfile.loadImage(uri.toString())
+            binding.etName.setText(Preferences(requireContext()).isUsernameProfile())
 
-        Preferences(requireContext()).setImageProfile(uri.toString())
-        showToast(" Success!")
-    }
+            Preferences(requireContext()).setImageProfile(uri.toString())
+            showToast(" Success!")
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,13 +45,13 @@ class ProfileFragment : Fragment() {
 
     private fun initListeners() {
 
-        binding.imgProfile.setOnClickListener{
+        binding.imgProfile.setOnClickListener {
             mGetContent.launch("image/*")
         }
     }
 
     private fun initViews() {
         binding.imgProfile.setImageURI(Preferences(requireContext()).getImageProfile()?.toUri())
-        Preferences(requireContext()).saveUsernameProfile(binding.etName.getText().toString())
+        Preferences(requireContext()).saveUsernameProfile(binding.etName.text.toString())
     }
 }

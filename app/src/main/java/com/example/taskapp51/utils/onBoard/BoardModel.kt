@@ -6,4 +6,4 @@ data class BoardModel(
     var description: String,
     var isLast: Boolean,
     var bg: Int
-): java.io.Serializable
+) : java.io.Serializable

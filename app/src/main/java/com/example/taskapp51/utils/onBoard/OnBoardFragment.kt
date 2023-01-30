@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.doOnAttach
-import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentOnBoardBinding
 
 class OnBoardFragment : Fragment() {
@@ -14,10 +12,9 @@ class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOnBoardBinding.inflate(inflater,container,false)
+        binding = FragmentOnBoardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,11 +27,11 @@ class OnBoardFragment : Fragment() {
         binding.dotsIndicator.attachTo(binding.vpBoard)
     }
 
-    private fun onNextClick(){
+    private fun onNextClick() {
         binding.vpBoard.currentItem += 1
     }
 
-    private fun onSkipClick(){
-        binding.vpBoard.currentItem =  2
+    private fun onSkipClick() {
+        binding.vpBoard.currentItem = 2
     }
 }

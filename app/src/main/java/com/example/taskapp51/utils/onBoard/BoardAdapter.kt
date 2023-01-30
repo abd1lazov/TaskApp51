@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.taskapp51.utils.onBoard
 
 import androidx.core.os.bundleOf
@@ -6,9 +8,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.taskapp51.R
 
+@Suppress("DEPRECATION")
 class BoardAdapter(fm: FragmentManager,
-                    var listenerNext: () -> Unit,
-                    var listenerSkip: () -> Unit)
+                   private var listenerNext: () -> Unit,
+                   private var listenerSkip: () -> Unit)
                     : FragmentStatePagerAdapter(fm) {
 
     private val listBoarding = arrayListOf(

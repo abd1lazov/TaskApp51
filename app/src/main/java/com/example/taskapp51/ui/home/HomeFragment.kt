@@ -1,18 +1,17 @@
 package com.example.taskapp51.ui.home
 
+import android.app.AlertDialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taskapp51.App
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentHomeBinding
 
 
+@Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
@@ -24,7 +23,45 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+        setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu )
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.sort_menu){
+
+            val items = arrayOf("Date", "A-z", "z-A")
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Sort by:")
+            builder.setItems(items){ dialog, which ->
+                when(which){
+                     0->{
+                        adapter.addTasks(App.database.taskDao()?.getAllTaskByDate() as List<TaskModel>)
+                         dialog.dismiss()
+                     }
+                    1->{
+                        adapter.addTasks(App.database.taskDao()?.getAllTaskByAlphabetAz() as List<TaskModel>)
+                        dialog.dismiss()
+                    }
+                    2->{
+                        adapter.addTasks(App.database.taskDao()?.getAllTaskByAlphabetZa() as List<TaskModel>)
+                        dialog.dismiss()
+                    }
+                }
+            }
+            builder.show()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,21 +76,6 @@ class HomeFragment : Fragment() {
         binding.fabHome.setOnClickListener{
             findNavController().navigate(R.id.newTaskFragment)
         }
-//            val simpleCallBack = object: ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT){
-//                override fun onMove(
-//                    recyclerView: RecyclerView,
-//                    viewHolder: RecyclerView.ViewHolder,
-//                    target: RecyclerView.ViewHolder
-//                ): Boolean {
-//                    return false
-//                }
-//
-//                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//                    val position = viewHolder.adapterPosition
-//                    items.remove(items[position])
-//                    adapter.notifyDataSetChanged()
-//                }
-//            }
     }
 
     private fun initViews() {
@@ -61,12 +83,32 @@ class HomeFragment : Fragment() {
         binding.rvHome.layoutManager = LinearLayoutManager(context)
         binding.rvHome.adapter = adapter
 
-        val listOfTasks = App.database.taskDao()?.getAllTasks()
-        adapter.addTasks(listOfTasks as List<TaskModel>)
+        setData()
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = TaskAdapter()
+        adapter = TaskAdapter(this:: onLongClickListener)
+    }
+    private fun onLongClickListener(pos: Int){
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Delete")
+        builder.setMessage("Are you sure you want to delete it?")
+
+        builder.setPositiveButton(android.R.string.yes) { _, _ ->
+            App.database.taskDao()?.delete(adapter.getTask(pos))
+            setData()
+        }
+
+        builder.setNegativeButton(android.R.string.no) { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.show()
+    }
+
+    private fun setData(){
+        val listOfTasks = App.database.taskDao()?.getAllTasks()
+        adapter.addTasks(listOfTasks as List<TaskModel>)
     }
 }

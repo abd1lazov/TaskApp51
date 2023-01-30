@@ -12,17 +12,18 @@ import com.example.taskapp51.databinding.FragmentOnBoardPageBinding
 import com.example.taskapp51.utils.Preferences
 
 class OnBoardPageFragment(
-                var listenerNext: () -> Unit,
-                var listenerSkip: () -> Unit):
-                Fragment() {
+    private var listenerNext: () -> Unit,
+    private var listenerSkip: () -> Unit
+) :
+    Fragment() {
 
-    lateinit var binding: FragmentOnBoardPageBinding
+    private lateinit var binding: FragmentOnBoardPageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOnBoardPageBinding.inflate(inflater,container,false)
+        binding = FragmentOnBoardPageBinding.inflate(inflater, container, false)
 
         initViews()
         initListeners()
@@ -31,19 +32,20 @@ class OnBoardPageFragment(
     }
 
     private fun initListeners() {
-        binding.btnStart.setOnClickListener{
+        binding.btnStart.setOnClickListener {
             Preferences(requireContext()).setBoardingShowed(true)
             findNavController().navigate(R.id.navigation_home)
 //            findNavController().navigateUp()
         }
-        binding.btnNext.setOnClickListener{
+        binding.btnNext.setOnClickListener {
             listenerNext.invoke()
         }
-        binding.btnSkip.setOnClickListener{
+        binding.btnSkip.setOnClickListener {
             listenerSkip.invoke()
         }
     }
 
+    @Suppress("DEPRECATION")
     private fun initViews() {
         arguments.let {
             val data = it?.getSerializable("onBoarding") as BoardModel
@@ -55,9 +57,9 @@ class OnBoardPageFragment(
             binding.btnNext.isVisible = data.isLast == false
             binding.btnStart.isVisible = data.isLast == true
 
-            if (!data.isLast){
+            if (!data.isLast) {
                 binding.boardConst.setBackgroundResource(data.bg)
-            }else{
+            } else {
                 binding.boardConst.setBackgroundResource(data.bg)
             }
         }

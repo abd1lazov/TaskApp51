@@ -26,23 +26,26 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications, R.id.navigation_profile,
+                R.id.navigation_home,
+                R.id.navigation_dashboard,
+                R.id.navigation_notifications,
+                R.id.navigation_profile,
                 R.id.newTaskFragment
             )
         )
-        if(!Preferences(applicationContext).isBoardingShowed()){
+        if (!Preferences(applicationContext).isBoardingShowed()) {
             navController.navigate(R.id.onBoardFragment)
         }
 
-        navController.addOnDestinationChangedListener{_, destination, _, ->
-            if (destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment){
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment) {
                 navView.visibility = View.GONE
-            }else {
+            } else {
                 navView.visibility = View.VISIBLE
             }
-            if (destination.id == R.id. onBoardFragment){
+            if (destination.id == R.id.onBoardFragment) {
                 supportActionBar?.hide()
-            }else{
+            } else {
                 supportActionBar?.show()
             }
         }
