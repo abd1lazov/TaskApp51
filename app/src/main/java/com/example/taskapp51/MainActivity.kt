@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
+
+        navController.navigate(R.id.authFragment)
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
@@ -37,13 +40,16 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.onBoardFragment)
         }
 
+        val listWithoutBottomNav = setOf(R.id.newTaskFragment,R.id.onBoardFragment, R.id.authFragment)
+        val listWithoutAppBar = setOf(R.id.onBoardFragment, R.id.authFragment)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.newTaskFragment || destination.id == R.id.onBoardFragment) {
+            if (listWithoutBottomNav.contains(destination.id)) {
                 navView.visibility = View.GONE
             } else {
                 navView.visibility = View.VISIBLE
             }
-            if (destination.id == R.id.onBoardFragment) {
+            if (listWithoutAppBar.contains(destination.id)) {
                 supportActionBar?.hide()
             } else {
                 supportActionBar?.show()
