@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.taskapp51.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/onBoardPageFragment"

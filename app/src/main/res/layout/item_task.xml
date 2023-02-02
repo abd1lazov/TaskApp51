@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:padding="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#DAD3C8">
+    android:background="#698269">
 
     <TextView
         android:id="@+id/tv_title_item"

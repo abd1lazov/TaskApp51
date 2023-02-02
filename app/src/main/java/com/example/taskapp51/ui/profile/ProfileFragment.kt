@@ -1,12 +1,11 @@
 package com.example.taskapp51.ui.profile
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentProfileBinding
 import com.example.taskapp51.extensions.loadImage
 import com.example.taskapp51.extensions.showToast
@@ -32,7 +31,16 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentProfileBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         return binding.root
+    }
+
+    @Suppress("DEPRECATION")
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.settings,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
