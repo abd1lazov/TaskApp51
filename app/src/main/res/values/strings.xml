@@ -19,4 +19,8 @@
     <string name="setting">setting</string>
     <string name="phone_number">Phone number</string>
     <string name="send">Send</string>
+    <string name="Delete">Delete</string>
+    <string name="Message">Are you sure you want to delete it?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
 </resources>

@@ -6,9 +6,11 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.sqlite.db.SupportSQLiteCompat.Api16Impl.cancel
 import com.example.taskapp51.App
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentHomeBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 
 @Suppress("DEPRECATION")
@@ -91,19 +93,30 @@ class HomeFragment : Fragment() {
     }
 
     private fun onLongClickListener(pos: Int){
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Delete")
-        builder.setMessage("Are you sure you want to delete it?")
-
-        builder.setPositiveButton(android.R.string.yes) { _, _ ->
-            App.database.taskDao()?.delete(adapter.getTask(pos))
-            setData()
-        }
-
-        builder.setNegativeButton(android.R.string.no) { dialog, _ ->
-            dialog.dismiss()
-        }
-        builder.show()
+//        val builder = AlertDialog.Builder(requireContext())
+//        builder.setTitle("Delete")
+//        builder.setMessage("Are you sure you want to delete it?")
+//
+//        builder.setPositiveButton(android.R.string.yes) { _, _ ->
+//            App.database.taskDao()?.delete(adapter.getTask(pos))
+//            setData()
+//        }
+//
+//        builder.setNegativeButton(android.R.string.no) { dialog, _ ->
+//            dialog.dismiss()
+//        }
+//        builder.show()
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(resources.getString(R.string.Delete))
+            .setMessage(resources.getString(R.string.Message))
+            .setNegativeButton(resources.getString(R.string.No)) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(resources.getString(R.string.Yes)) { _, _ ->
+                App.database.taskDao()?.delete(adapter.getTask(pos))
+                setData()
+            }
+            .show()
     }
 
     private fun setData(){
