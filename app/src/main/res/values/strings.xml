@@ -17,4 +17,6 @@
     <string name="start">Start</string>
     <string name="sort">sort</string>
     <string name="setting">setting</string>
+    <string name="phone_number">Phone number</string>
+    <string name="send">Send</string>
 </resources>

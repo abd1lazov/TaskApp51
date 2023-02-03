@@ -55,6 +55,5 @@
         android:padding="12dp"
         android:layout_marginTop="16dp"
         app:cornerRadius="12dp"/>
-        
 
 </androidx.constraintlayout.widget.ConstraintLayout>

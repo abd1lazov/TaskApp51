@@ -60,7 +60,6 @@ class HomeFragment : Fragment() {
             }
             builder.show()
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -84,13 +83,13 @@ class HomeFragment : Fragment() {
         binding.rvHome.adapter = adapter
 
         setData()
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = TaskAdapter(this:: onLongClickListener)
     }
+
     private fun onLongClickListener(pos: Int){
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Delete")
