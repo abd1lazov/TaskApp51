@@ -1,12 +1,12 @@
 package com.example.taskapp51.ui.home
 
 import android.app.AlertDialog
+import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.sqlite.db.SupportSQLiteCompat.Api16Impl.cancel
 import com.example.taskapp51.App
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentHomeBinding
@@ -106,7 +106,7 @@ class HomeFragment : Fragment() {
 //            dialog.dismiss()
 //        }
 //        builder.show()
-        MaterialAlertDialogBuilder(requireContext())
+        val builder = MaterialAlertDialogBuilder(requireContext())
             .setTitle(resources.getString(R.string.Delete))
             .setMessage(resources.getString(R.string.Message))
             .setNegativeButton(resources.getString(R.string.No)) { dialog, _ ->
@@ -116,7 +116,7 @@ class HomeFragment : Fragment() {
                 App.database.taskDao()?.delete(adapter.getTask(pos))
                 setData()
             }
-            .show()
+        builder.show()
     }
 
     private fun setData(){
