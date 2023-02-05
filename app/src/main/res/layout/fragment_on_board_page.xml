@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="100dp"
-        android:src="@drawable/img"/>
+        android:src="@drawable/bacll"/>
 
     <TextView
         android:id="@+id/tv_to_do"

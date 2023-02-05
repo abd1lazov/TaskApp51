@@ -1,7 +1,6 @@
 package com.example.taskapp51.ui.home
 
 import android.app.AlertDialog
-import android.app.ProgressDialog.show
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -93,19 +92,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onLongClickListener(pos: Int){
-//        val builder = AlertDialog.Builder(requireContext())
-//        builder.setTitle("Delete")
-//        builder.setMessage("Are you sure you want to delete it?")
-//
-//        builder.setPositiveButton(android.R.string.yes) { _, _ ->
-//            App.database.taskDao()?.delete(adapter.getTask(pos))
-//            setData()
-//        }
-//
-//        builder.setNegativeButton(android.R.string.no) { dialog, _ ->
-//            dialog.dismiss()
-//        }
-//        builder.show()
+
         val builder = MaterialAlertDialogBuilder(requireContext())
             .setTitle(resources.getString(R.string.Delete))
             .setMessage(resources.getString(R.string.Message))

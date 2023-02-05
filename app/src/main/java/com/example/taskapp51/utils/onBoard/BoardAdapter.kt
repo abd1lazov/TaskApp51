@@ -16,7 +16,7 @@ class BoardAdapter(fm: FragmentManager,
 
     private val listBoarding = arrayListOf(
         BoardModel(
-        R.drawable.img,
+        R.drawable.bacll,
         "To-do list!",
         "Here you can write down something important or make a schedule for tomorrow:)",
         false,
