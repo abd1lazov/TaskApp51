@@ -42,11 +42,10 @@ class AuthFragment : Fragment() {
             .setActivity(requireActivity())
             .setCallbacks(object: PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-                    TODO("Not yet implemented")
+
                 }
 
                 override fun onVerificationFailed(p0: FirebaseException) {
-                    TODO("Not yet implemented")
                 }
 
             })
