@@ -5,7 +5,6 @@ import android.view.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import com.example.taskapp51.App
 import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentProfileBinding
 import com.example.taskapp51.extensions.loadImage
@@ -26,6 +25,7 @@ class ProfileFragment : Fragment() {
             showToast(" Success!")
         }
 
+    @Suppress("DEPRECATION")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +38,7 @@ class ProfileFragment : Fragment() {
     @Suppress("DEPRECATION")
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.settings,menu)
+        inflater.inflate(R.menu.settings, menu)
         super.onCreateOptionsMenu(menu, inflater)
 
     }

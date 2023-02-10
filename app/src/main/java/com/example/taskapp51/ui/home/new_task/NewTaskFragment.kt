@@ -15,10 +15,9 @@ class NewTaskFragment : Fragment() {
     private lateinit var binding: FragmentNewTaskBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentNewTaskBinding.inflate(inflater,container,false)
+        binding = FragmentNewTaskBinding.inflate(inflater, container, false)
 
         initViews()
         initListeners()
@@ -27,12 +26,14 @@ class NewTaskFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.btnSave.setOnClickListener{
+        binding.btnSave.setOnClickListener {
 
-            App.database.taskDao()?.insert(TaskModel(
-                title = binding.etTitle.text.toString().trim(),
-                desc = binding.etDesc.text.toString()
-            ))
+            App.database.taskDao()?.insert(
+                TaskModel(
+                    title = binding.etTitle.text.toString().trim(),
+                    desc = binding.etDesc.text.toString()
+                )
+            )
             findNavController().navigateUp()
         }
     }

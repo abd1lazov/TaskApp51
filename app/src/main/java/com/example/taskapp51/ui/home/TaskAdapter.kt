@@ -1,33 +1,40 @@
 package com.example.taskapp51.ui.home
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taskapp51.databinding.ItemTaskBinding
 
-class TaskAdapter(private var onLongClick: (Int) -> Unit): RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
+class TaskAdapter(private var onLongClick: (Int) -> Unit) :
+    RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     private var taskList = arrayListOf<TaskModel>()
 
-     fun addTask(taskModel: TaskModel){
+    fun addTask(taskModel: TaskModel) {
         taskList.add(taskModel)
         notifyItemChanged(0)
     }
 
-    fun addTasks(list: List<TaskModel>){
+    @SuppressLint("NotifyDataSetChanged")
+    fun addTasks(list: List<TaskModel>) {
         taskList.clear()
         taskList.addAll(list)
         notifyDataSetChanged()
     }
 
-    fun getTask(position: Int): TaskModel{
+    fun getTask(position: Int): TaskModel {
         return taskList[position]
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemTaskBinding.inflate(LayoutInflater.from(parent.context),
-            parent,
-            false))
+        return ViewHolder(
+            ItemTaskBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -38,13 +45,14 @@ class TaskAdapter(private var onLongClick: (Int) -> Unit): RecyclerView.Adapter<
         return taskList.size
     }
 
-    inner class ViewHolder(private var binding: ItemTaskBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private var binding: ItemTaskBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(taskModel: TaskModel) {
             binding.tvTitleItem.text = taskModel.title
             binding.tvDescItem.text = taskModel.desc
 
-            itemView.setOnLongClickListener{
+            itemView.setOnLongClickListener {
                 onLongClick(adapterPosition)
                 return@setOnLongClickListener true
             }
