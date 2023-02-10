@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/board_const"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/board_const"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".utils.onBoard.OnBoardPageFragment"
-    android:background="#DAD3C8">
+    android:background="#DAD3C8"
+    tools:context=".utils.onBoard.OnBoardPageFragment">
 
     <ImageView
         android:id="@+id/img_board"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="100dp"
-        android:src="@drawable/bacll"/>
+        android:src="@drawable/bacll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_to_do"
@@ -50,46 +50,46 @@
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cornerRadius="20dp"
-        android:text="@string/next"
-        app:layout_constraintTop_toBottomOf="@id/tv_description"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="@color/black"
         android:paddingVertical="14dp"
-        android:layout_marginEnd="64dp"
+        android:text="@string/next"
+        app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="32dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start"
         android:layout_width="256dp"
         android:layout_height="wrap_content"
-        app:cornerRadius="64dp"
-        android:text="@string/start"
-        app:layout_constraintTop_toBottomOf="@id/tv_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/black"
-        android:paddingVertical="14dp"
         android:layout_marginEnd="64dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/black"
         android:gravity="center"
-        android:visibility="gone"
+        android:paddingVertical="14dp"
+        android:text="@string/start"
         android:textColor="@color/white"
+        android:visibility="gone"
+        app:cornerRadius="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="32dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description" />
 
     <TextView
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/skip"
-        app:layout_constraintTop_toBottomOf="@+id/tv_description"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-condensed"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="32dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
