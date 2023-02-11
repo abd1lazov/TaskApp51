@@ -34,10 +34,25 @@ class AuthFragment : Fragment() {
     }
 
     private fun initListeners() {
-        TODO("Not yet implemented")
+        binding.btnSendPhone.setOnClickListener{
+            if (binding.etPhone.text!!.isNotEmpty()){
+                sendPhone()
+                showToast("Sending...")
+            }else{
+                binding.etPhone.error = "Write your phone number!!!"
+            }
+        }
+        binding.btnConfirm.setOnClickListener{
+
+        }
     }
 
     private fun initViews() {
+
+    }
+
+    private fun sendPhone(){
+
         auth.setLanguageCode("ru")
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(binding.etPhone.text.toString())
@@ -57,9 +72,17 @@ class AuthFragment : Fragment() {
                     correctCode = verificationCode
 
                     binding.etPhone.isVisible = false
+                    binding.btnSendPhone.isVisible = false
+
+                    binding.etCodeLayout.isVisible = true
+                    binding.btnConfirm.isVisible = true
+
                 }
             })
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
+
+    private fun sendCode(){}
+
 }
