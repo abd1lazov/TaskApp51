@@ -25,7 +25,7 @@ class AuthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAuthBinding.inflate(inflater,container,false)
+        binding = FragmentAuthBinding.inflate(inflater, container, false)
 
         initViews()
         initListeners()
@@ -34,15 +34,15 @@ class AuthFragment : Fragment() {
     }
 
     private fun initListeners() {
-        binding.btnSendPhone.setOnClickListener{
-            if (binding.etPhone.text!!.isNotEmpty()){
+        binding.btnSendPhone.setOnClickListener {
+            if (binding.etPhone.text!!.isNotEmpty()) {
                 sendPhone()
                 showToast("Sending...")
-            }else{
+            } else {
                 binding.etPhone.error = "Write your phone number!!!"
             }
         }
-        binding.btnConfirm.setOnClickListener{
+        binding.btnConfirm.setOnClickListener {
 
         }
     }
@@ -51,14 +51,14 @@ class AuthFragment : Fragment() {
 
     }
 
-    private fun sendPhone(){
+    private fun sendPhone() {
 
         auth.setLanguageCode("ru")
         val options = PhoneAuthOptions.newBuilder(auth)
             .setPhoneNumber(binding.etPhone.text.toString())
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(requireActivity())
-            .setCallbacks(object: PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
 //                    showToast(p0.smsCode.toString())
                 }
@@ -67,7 +67,10 @@ class AuthFragment : Fragment() {
                     showToast(exception.message.toString())
                 }
 
-                override fun onCodeSent(verificationCode: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                override fun onCodeSent(
+                    verificationCode: String,
+                    p1: PhoneAuthProvider.ForceResendingToken
+                ) {
                     super.onCodeSent(verificationCode, p1)
                     correctCode = verificationCode
 
@@ -83,6 +86,7 @@ class AuthFragment : Fragment() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    private fun sendCode(){}
+    private fun sendCode() {
+    }
 
 }
