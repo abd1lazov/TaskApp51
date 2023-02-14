@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
+import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentAuthBinding
 import com.example.taskapp51.extensions.showToast
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
@@ -91,6 +94,19 @@ class AuthFragment : Fragment() {
             correctCode.toString(),
             binding.etCode.text.toString()
         )
+        signInWithPhoneAuthCredential(credential)
     }
 
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential){
+
+        auth.signInWithCredential(credential).addOnCompleteListener(requireActivity()){ task ->
+            if (task.isSuccessful){
+                findNavController().navigate(R.id.navigation_home)
+            }else{
+                if (task.exception is FirebaseAuthInvalidCredentialsException){
+                    showToast(task.exception.toString())
+                }
+            }
+        }
+    }
 }
