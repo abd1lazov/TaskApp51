@@ -87,6 +87,10 @@ class AuthFragment : Fragment() {
     }
 
     private fun sendCode() {
+        val credential = PhoneAuthProvider.getCredential(
+            correctCode.toString(),
+            binding.etCode.text.toString()
+        )
     }
 
 }
