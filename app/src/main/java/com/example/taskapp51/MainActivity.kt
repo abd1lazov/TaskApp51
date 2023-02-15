@@ -40,11 +40,12 @@ class MainActivity : AppCompatActivity() {
         )
         if (!Preferences(applicationContext).isBoardingShowed()) {
             navController.navigate(R.id.onBoardFragment)
-        }else if (auth.currentUser == null){
+        } else if (auth.currentUser == null) {
             navController.navigate(R.id.authFragment)
         }
 
-        val listWithoutBottomNav = setOf(R.id.newTaskFragment,R.id.onBoardFragment, R.id.authFragment)
+        val listWithoutBottomNav =
+            setOf(R.id.newTaskFragment, R.id.onBoardFragment, R.id.authFragment)
         val listWithoutAppBar = setOf(R.id.onBoardFragment, R.id.authFragment)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->

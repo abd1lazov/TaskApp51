@@ -97,13 +97,13 @@ class AuthFragment : Fragment() {
         signInWithPhoneAuthCredential(credential)
     }
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential){
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
 
-        auth.signInWithCredential(credential).addOnCompleteListener(requireActivity()){ task ->
-            if (task.isSuccessful){
+        auth.signInWithCredential(credential).addOnCompleteListener(requireActivity()) { task ->
+            if (task.isSuccessful) {
                 findNavController().navigate(R.id.navigation_home)
-            }else{
-                if (task.exception is FirebaseAuthInvalidCredentialsException){
+            } else {
+                if (task.exception is FirebaseAuthInvalidCredentialsException) {
                     showToast(task.exception.toString())
                 }
             }
