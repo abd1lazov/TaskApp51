@@ -63,7 +63,6 @@ class AuthFragment : Fragment() {
             .setActivity(requireActivity())
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                 override fun onVerificationCompleted(p0: PhoneAuthCredential) {
-//                    showToast(p0.smsCode.toString())
                 }
 
                 override fun onVerificationFailed(exception: FirebaseException) {
