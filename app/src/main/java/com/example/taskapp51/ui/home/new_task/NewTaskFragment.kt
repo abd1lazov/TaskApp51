@@ -38,8 +38,6 @@ class NewTaskFragment : Fragment() {
         }
     }
 
-    private fun initViews() {
-
-    }
+    private fun initViews() {}
 
 }

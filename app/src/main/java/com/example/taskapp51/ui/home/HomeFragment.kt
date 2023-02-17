@@ -11,7 +11,6 @@ import com.example.taskapp51.R
 import com.example.taskapp51.databinding.FragmentHomeBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-
 @Suppress("DEPRECATION")
 class HomeFragment : Fragment() {
 

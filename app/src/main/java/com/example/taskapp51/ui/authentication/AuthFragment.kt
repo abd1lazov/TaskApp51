@@ -81,7 +81,6 @@ class AuthFragment : Fragment() {
 
                     binding.etCodeLayout.isVisible = true
                     binding.btnConfirm.isVisible = true
-
                 }
             })
             .build()
