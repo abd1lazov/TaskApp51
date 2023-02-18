@@ -10,12 +10,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.taskapp51.databinding.ActivityMainBinding
 import com.example.taskapp51.utils.Preferences
-import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private var auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +38,6 @@ class MainActivity : AppCompatActivity() {
         )
         if (!Preferences(applicationContext).isBoardingShowed()) {
             navController.navigate(R.id.onBoardFragment)
-        } else if (auth.currentUser == null) {
-            navController.navigate(R.id.authFragment)
         }
 
         val listWithoutBottomNav =
