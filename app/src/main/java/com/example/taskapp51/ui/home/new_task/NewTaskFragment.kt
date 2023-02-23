@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp51.App
 import com.example.taskapp51.databinding.FragmentNewTaskBinding
-import com.example.taskapp51.extensions.showToast
 import com.example.taskapp51.ui.home.TaskModel
 
 class NewTaskFragment : Fragment() {
@@ -30,13 +29,14 @@ class NewTaskFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             App.database.taskDao()?.insert(
                     TaskModel(
-                        title = binding.etTitle.text?.isEmpty().toString(),
-                        desc = binding.etDesc.text?.isEmpty().toString()
+                        title = binding.etTitle.text.toString(),
+                        desc = binding.etDesc.text.toString()
                     )
                 )
         }
         findNavController().navigateUp()
     }
+    private fun initViews() {}
 }
 
-private fun initViews() {}
+
